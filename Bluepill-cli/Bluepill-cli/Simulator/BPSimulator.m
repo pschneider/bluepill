@@ -327,16 +327,7 @@
                 dispatch_source_cancel(source);
             });
             dispatch_source_set_cancel_handler(source, ^{
-                int status;
-                pid_t p;
-                p = wait4(pid, &status, WNOHANG, NULL);
-                if (p == 0) {
-                    [BPUtils printInfo:DEBUGINFO withString:@"NO PROCESS TO WAIT FOR!"];
-                } else if (pid == p) {
-                    [BPUtils printInfo:DEBUGINFO withString:@"WIFEXITED == %u WIFSIGNALED == %u", WIFEXITED(status), WIFSIGNALED(status)];
-                } else {
-                    [BPUtils printInfo:DEBUGINFO withString:@"Got something weird from waitpid4"];
-                }
+                blockSelf.monitor.simulatorState = AppFinished;
                 // Post a APPCLOSED signal to the fifo
                 [blockSelf.stdOutHandle writeData:[@"\nBP_APP_PROC_ENDED\n" dataUsingEncoding:NSUTF8StringEncoding]];
             });

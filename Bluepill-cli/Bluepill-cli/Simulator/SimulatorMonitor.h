@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, SimulatorState) {
     AppLaunched,
     Running,
     TestsStarted,
+    AppFinished,
     Completed
 };
 
