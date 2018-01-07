@@ -152,7 +152,7 @@ void Output(NSMutableString *appendTo, NSString *fmt, ...);
     [string replaceOccurrencesOfString:@">"  withString:@"&gt;"   options:NSLiteralSearch range:NSMakeRange(0, [string length])];
     [string replaceOccurrencesOfString:@"<"  withString:@"&lt;"   options:NSLiteralSearch range:NSMakeRange(0, [string length])];
     // Replace UTF-8 Backspace
-    [string replaceOccurrencesOfString:@"\x08" withString:@"&#x8;" options:NSLiteralSearch range:NSMakeRange(0, [string length])];
+    [string replaceOccurrencesOfString:@"\x08" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [string length])];
 
     return [NSString stringWithString:string];
 }
